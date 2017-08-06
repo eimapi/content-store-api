@@ -18,19 +18,15 @@ package com.eimapi.store.base;
 import com.eimapi.store.components.Content;
 import com.eimapi.store.components.SpaceStore;
 import com.eimapi.store.exception.ContentStoreException;
-import org.apache.commons.io.FileUtils;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 
 /**
  * Class extended from {@link com.eimapi.store.components.Content} just for a test propose
  *
- * @since 0.0.1
  * @version 0.0.1
+ * @since 0.0.1
  */
 public class ContentForTest<SpaceStoreForTest> extends Content {
 
@@ -38,7 +34,7 @@ public class ContentForTest<SpaceStoreForTest> extends Content {
      * default constructor
      *
      * @param spaceStore - the content spaceStore
-     * @throws ContentStoreException
+     * @throws ContentStoreException - if any errors occur
      */
     public ContentForTest(SpaceStore spaceStore) throws ContentStoreException {
         super(spaceStore);
@@ -50,7 +46,7 @@ public class ContentForTest<SpaceStoreForTest> extends Content {
      * @param spaceStore - the content spaceStore
      * @param uuid       - the content uuid
      * @param base       - the content base
-     * @throws ContentStoreException
+     * @throws ContentStoreException - case any errors occur
      */
     public ContentForTest(SpaceStore spaceStore, String uuid, String base) throws ContentStoreException {
         super(spaceStore, uuid, base);
@@ -59,11 +55,11 @@ public class ContentForTest<SpaceStoreForTest> extends Content {
     /**
      * write a {@link ByteArrayInputStream} at a content file
      *
-     * @param baos
+     * @param baos -the byte array output stream to be writed
      */
     @Override
     public void write(ByteArrayOutputStream baos) throws ContentStoreException {
-        throw new NotImplementedException();
+        throw new ContentStoreException();
     }
 
     /**
@@ -73,6 +69,6 @@ public class ContentForTest<SpaceStoreForTest> extends Content {
      */
     @Override
     public ByteArrayInputStream read() throws ContentStoreException {
-        throw new NotImplementedException();
+        throw new ContentStoreException();
     }
 }

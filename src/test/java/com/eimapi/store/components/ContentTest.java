@@ -18,15 +18,11 @@ package com.eimapi.store.components;
 import com.eimapi.store.base.ContentForTest;
 import com.eimapi.store.base.SpaceStoreForTest;
 import com.eimapi.store.exception.ContentStoreException;
-import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 
 /**
  * Test case for {@link Content} abstract class
@@ -41,7 +37,7 @@ public class ContentTest {
     @Before
     public void setUp() throws Exception {
         this.ss = new SpaceStoreForTest("./base", "base-test-uuid", "test");
-        this.content = new ContentForTest<SpaceStoreForTest>(ss, "uuid-base-cc", "/tmp");
+        this.content = new ContentForTest<>(ss, "uuid-base-cc", "/tmp");
     }
 
     @Test
@@ -119,12 +115,12 @@ public class ContentTest {
         Assert.assertEquals(this.content.getSpaceStore(), forTest);
     }
 
-    @Test(expected = NotImplementedException.class)
+    @Test(expected = ContentStoreException.class)
     public void write() throws Exception {
         this.content.write(new ByteArrayOutputStream());
     }
 
-    @Test(expected = NotImplementedException.class)
+    @Test(expected = ContentStoreException.class)
     public void read() throws Exception {
         this.content.read();
     }
