@@ -28,7 +28,7 @@ import java.io.ByteArrayOutputStream;
  * @version 0.0.1
  * @since 0.0.1
  */
-public class ContentForTest<SpaceStoreForTest> extends Content {
+public class ContentForTest<SpaceStoreForTest extends SpaceStore> extends Content<SpaceStoreForTest> {
 
     /**
      * default constructor
@@ -36,7 +36,7 @@ public class ContentForTest<SpaceStoreForTest> extends Content {
      * @param spaceStore - the content spaceStore
      * @throws ContentStoreException - if any errors occur
      */
-    public ContentForTest(SpaceStore spaceStore) throws ContentStoreException {
+    public ContentForTest(SpaceStoreForTest spaceStore) throws ContentStoreException {
         super(spaceStore);
     }
 
@@ -48,7 +48,7 @@ public class ContentForTest<SpaceStoreForTest> extends Content {
      * @param base       - the content base
      * @throws ContentStoreException - case any errors occur
      */
-    public ContentForTest(SpaceStore spaceStore, String uuid, String base) throws ContentStoreException {
+    public ContentForTest(SpaceStoreForTest spaceStore, String uuid, String base) throws ContentStoreException {
         super(spaceStore, uuid, base);
     }
 

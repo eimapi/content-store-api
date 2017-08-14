@@ -17,18 +17,19 @@ package com.eimapi.store;
 
 import com.eimapi.store.components.Content;
 import com.eimapi.store.components.SpaceStore;
+import com.eimapi.store.exception.ContentStoreException;
 
 
 /**
  * Interface to provide all methods to manage the content.
- *
+ * <p>
  * These methods do not organize the content in a data structure. The main function
  * of this interface is provide methods to create remove and read content. To read
  * the content is necessary that user has all information about content that want to
  * be read.
  *
- * @since 0.0.1
  * @version 0.0.1
+ * @since 0.0.1
  */
 public interface ContentService<T extends Content, E extends SpaceStore> {
 
@@ -38,33 +39,33 @@ public interface ContentService<T extends Content, E extends SpaceStore> {
      * @param spaceStore - the space store that will receive the content
      * @return T - the created content
      */
-    T createNewContent(E spaceStore);
+    T createNewContent(E spaceStore) throws ContentStoreException;
 
     /**
      * Delete the provided content inside space store (also provided)
      *
      * @param spaceStore - the space store that contain content
-     * @param content - the content that will be deleted
+     * @param content    - the content that will be deleted
      */
-    void deleteContent(E spaceStore, T content);
+    void deleteContent(E spaceStore, T content) throws ContentStoreException;
 
     /**
      * Create a new version of content.
      *
-     * @param spaceStore - the space store that will receive the content new version
-     * @param contentBase - the content that will be versioned
+     * @param spaceStore   - the space store that will receive the content new version
+     * @param contentBase  - the content that will be versioned
      * @param versionLabel - the new version label
      * @return T - the new version of content
      */
-    T createNewVersion(E spaceStore, T contentBase, String versionLabel);
+    T createNewVersion(E spaceStore, T contentBase, String versionLabel) throws ContentStoreException;
 
     /**
      * Recovery the version content
      *
-     * @param spaceStore - the space store that will receive the recovered content
-     * @param contentBase - the content that will be recovered
+     * @param spaceStore   - the space store that will receive the recovered content
+     * @param contentBase  - the content that will be recovered
      * @param versionLabel - the new version label
      * @return T - the recovered content
      */
-    T recoveryVersion(E spaceStore, T contentBase, String versionLabel);
+    T recoveryVersion(E spaceStore, T contentBase, String versionLabel) throws ContentStoreException;
 }

@@ -21,8 +21,8 @@ import com.eimapi.store.exception.ContentStoreException;
 /**
  * Class extended from {@link SpaceStore} just for a test propose
  *
- * @since 0.0.1
  * @version 0.0.1
+ * @since 0.0.1
  */
 public class SpaceStoreForTest extends SpaceStore {
     /**
@@ -39,9 +39,8 @@ public class SpaceStoreForTest extends SpaceStore {
      *
      * @param base - the base for space store
      * @param uuid - the space store uuid
-     * @param name - the space store name
      */
-    public SpaceStoreForTest(String base, String uuid, String name) throws ContentStoreException {
-        super(base, uuid, name);
+    public SpaceStoreForTest(String base, String uuid) throws ContentStoreException {
+        super(base, uuid);
     }
 }

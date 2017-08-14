@@ -19,6 +19,7 @@ import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -32,7 +33,6 @@ public abstract class SpaceStore implements Serializable {
     private static final long serialVersionUID = 2797798527651509363L;
 
     private String uuid;
-    private String name;
     private String base;
 
     private ResourceBundle bundle;
@@ -40,8 +40,8 @@ public abstract class SpaceStore implements Serializable {
     /**
      * private constructor
      */
-    private SpaceStore() {
-        this.bundle = ResourceBundle.getBundle("content-store");
+    protected SpaceStore() {
+        this.bundle = ResourceBundle.getBundle("content-store", Locale.getDefault());
     }
 
     /**
@@ -49,7 +49,7 @@ public abstract class SpaceStore implements Serializable {
      *
      * @param base - the base for space store
      */
-    public SpaceStore(String base) throws ContentStoreException {
+    protected SpaceStore(String base) throws ContentStoreException {
         this();
         this.setBase(base);
     }
@@ -59,12 +59,10 @@ public abstract class SpaceStore implements Serializable {
      *
      * @param base - the base for space store
      * @param uuid - the space store uuid
-     * @param name - the space store name
      */
-    public SpaceStore(String base, String uuid, String name) throws ContentStoreException {
+    protected SpaceStore(String base, String uuid) throws ContentStoreException {
         this(base);
         this.setUuid(uuid);
-        this.setName(name);
     }
 
     /**
@@ -84,35 +82,11 @@ public abstract class SpaceStore implements Serializable {
     public void setUuid(String uuid) throws ContentStoreException {
         if (uuid == null || uuid.trim().isEmpty()) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null","uuid", SpaceStore.class.getSimpleName())
+                    this.getMessage("store.field.null", "uuid", SpaceStore.class.getSimpleName())
             );
         }
 
         this.uuid = uuid;
-    }
-
-    /**
-     * Get the space store name
-     *
-     * @return String - the name of space store
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Set the space store name
-     *
-     * @param name - the space store name
-     */
-    public void setName(String name) throws ContentStoreException {
-        if (name == null || name.trim().isEmpty()) {
-            throw new ContentStoreException(
-                    this.getMessage("store.field.null","name", SpaceStore.class.getSimpleName())
-            );
-        }
-
-        this.name = name;
     }
 
     /**
@@ -132,7 +106,7 @@ public abstract class SpaceStore implements Serializable {
     public void setBase(String base) throws ContentStoreException {
         if (base == null || base.trim().isEmpty()) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null","base", SpaceStore.class.getSimpleName())
+                    this.getMessage("store.field.null", "base", SpaceStore.class.getSimpleName())
             );
         }
 
@@ -150,7 +124,6 @@ public abstract class SpaceStore implements Serializable {
         SpaceStore that = (SpaceStore) o;
 
         if (uuid != null ? !uuid.equals(that.uuid) : that.uuid != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
         return base != null ? base.equals(that.base) : that.base == null;
     }
 
@@ -160,7 +133,6 @@ public abstract class SpaceStore implements Serializable {
     @Override
     public int hashCode() {
         int result = uuid != null ? uuid.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (base != null ? base.hashCode() : 0);
         return result;
     }
@@ -168,11 +140,11 @@ public abstract class SpaceStore implements Serializable {
     /**
      * Message Bundle method
      *
-     * @param key - the key for message bundle
+     * @param key   - the key for message bundle
      * @param param - the parameter array
      * @return String - the message
      */
-    private String getMessage(String key, String ... param) {
+    private String getMessage(String key, Object... param) {
         return MessageFormat.format(this.bundle.getString(key), param);
     }
 }

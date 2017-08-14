@@ -19,14 +19,13 @@ import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 /**
  * Interface to provide the methods that anable the read and write operations
  * at the content
  *
- * @since 0.0.1
  * @version 0.0.1
+ * @since 0.0.1
  */
 public interface ContentOperations {
 
@@ -34,7 +33,7 @@ public interface ContentOperations {
      * write a {@link ByteArrayInputStream} at a content file
      *
      * @param baos - the ByteArrayOutputStream
-     * @throws ContentStoreException
+     * @throws ContentStoreException - any exception
      */
     void write(ByteArrayOutputStream baos) throws ContentStoreException;
 
@@ -42,7 +41,7 @@ public interface ContentOperations {
      * Read content and return their data in byte array input stream
      *
      * @return ByteArrayInputStream
-     * @throws ContentStoreException
+     * @throws ContentStoreException - any exception
      */
     ByteArrayInputStream read() throws ContentStoreException;
 }

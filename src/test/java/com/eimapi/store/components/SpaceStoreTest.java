@@ -26,15 +26,15 @@ import java.util.UUID;
 /**
  * Test case for {@link SpaceStore} abstract class
  *
- * @since 0.0.1
  * @version 0.0.1
+ * @since 0.0.1
  */
 public class SpaceStoreTest {
     private SpaceStoreForTest ssft;
 
     @Before
     public void setUp() throws Exception {
-        this.ssft = new SpaceStoreForTest("/base", UUID.randomUUID().toString(), "default");
+        this.ssft = new SpaceStoreForTest("/base", UUID.randomUUID().toString());
     }
 
     @Test
@@ -73,30 +73,6 @@ public class SpaceStoreTest {
     @Test(expected = ContentStoreException.class)
     public void setUuidErrorEmpty() throws Exception {
         this.ssft.setUuid("   ");
-    }
-
-    @Test
-    public void getName() throws Exception {
-        Assert.assertNotNull(this.ssft.getName());
-        Assert.assertEquals(this.ssft.getName(), "default");
-    }
-
-    @Test
-    public void setName() throws Exception {
-        this.ssft.setName("new-one");
-
-        Assert.assertNotNull(this.ssft.getName());
-        Assert.assertEquals(this.ssft.getName(), "new-one");
-    }
-
-    @Test(expected = ContentStoreException.class)
-    public void setNameError() throws Exception {
-        this.ssft.setName(null);
-    }
-
-    @Test(expected = ContentStoreException.class)
-    public void setNameErrorEmpty() throws Exception {
-        this.ssft.setName("   ");
     }
 
     @Test

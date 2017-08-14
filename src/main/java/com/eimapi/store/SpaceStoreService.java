@@ -16,6 +16,10 @@
 package com.eimapi.store;
 
 import com.eimapi.store.components.SpaceStore;
+import com.eimapi.store.exception.ContentStoreException;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Interface that provide all methods to manage space stores.
@@ -28,10 +32,10 @@ public interface SpaceStoreService<T extends SpaceStore> {
     /**
      * Create a new {@link SpaceStore}
      *
-     * @param name the name of {@link SpaceStore}
+     * @param name - the name of {@link SpaceStore}
      * @return T - the space store
      */
-    T createSpaceStore(String name);
+    T createSpaceStore(String name) throws ContentStoreException;
 
     /**
      * Delete the {@link SpaceStore}.
@@ -43,8 +47,16 @@ public interface SpaceStoreService<T extends SpaceStore> {
     /**
      * Load {@link SpaceStore} based in their uuid
      *
-     * @param uuid - the {@link SpaceStore} uuid
-     * @return T - the SpaceStore
+     * @param params - the parameters to load a {@link SpaceStore}
+     * @return T - the {@link SpaceStore}
      */
-    T loadSpaceStore(String uuid);
+    T loadSpaceStore(Map<String, String> params);
+
+    /**
+     * List all {@link SpaceStore} at the base referenced by parameter
+     *
+     * @param params - all parameters needed to list parametes
+     * @return List - the list of {@link SpaceStore}
+     */
+    List<T> listSpaceStore(Map<String, String> params);
 }

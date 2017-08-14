@@ -19,6 +19,7 @@ import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -27,18 +28,18 @@ import java.util.ResourceBundle;
  * @version 0.0.1
  * @since 0.0.1
  */
-public abstract class Content<E extends SpaceStore> implements ContentOperations, Serializable {
+public abstract class Content<T extends SpaceStore> implements ContentOperations, Serializable {
 
     private static final long serialVersionUID = -8191495574858642382L;
 
     private String uuid;
     private String base;
-    private E spaceStore;
+    private T spaceStore;
 
     private ResourceBundle bundle;
 
-    private Content() {
-        this.bundle = ResourceBundle.getBundle("content-store");
+    protected Content() {
+        this.bundle = ResourceBundle.getBundle("content-store", Locale.getDefault());
     }
 
     /**
@@ -47,7 +48,7 @@ public abstract class Content<E extends SpaceStore> implements ContentOperations
      * @param spaceStore - the content spaceStore
      * @throws ContentStoreException
      */
-    public Content(E spaceStore) throws ContentStoreException {
+    protected Content(T spaceStore) throws ContentStoreException {
         this();
         this.setSpaceStore(spaceStore);
     }
@@ -60,7 +61,7 @@ public abstract class Content<E extends SpaceStore> implements ContentOperations
      * @param base - the content base
      * @throws ContentStoreException
      */
-    public Content(E spaceStore, String uuid, String base) throws ContentStoreException {
+    protected Content(T spaceStore, String uuid, String base) throws ContentStoreException {
         this(spaceStore);
         this.setUuid(uuid);
         this.setBase(base);
@@ -118,7 +119,7 @@ public abstract class Content<E extends SpaceStore> implements ContentOperations
      * get the {@link SpaceStore}
      * @return E - the space store element
      */
-    public E getSpaceStore() {
+    public T getSpaceStore() {
         return spaceStore;
     }
 
@@ -127,7 +128,7 @@ public abstract class Content<E extends SpaceStore> implements ContentOperations
      *
      * @param spaceStore - the space store element
      */
-    public void setSpaceStore(E spaceStore) throws ContentStoreException {
+    public void setSpaceStore(T spaceStore) throws ContentStoreException {
         if(spaceStore == null) {
             throw new ContentStoreException(
                     this.getMessage("store.field.null", "spaceStore", Content.class.getSimpleName())
@@ -170,7 +171,7 @@ public abstract class Content<E extends SpaceStore> implements ContentOperations
      * @param param - the parameter array
      * @return String - the message
      */
-    private String getMessage(String key, String ... param) {
+    private String getMessage(String key, Object ... param) {
         return MessageFormat.format(this.bundle.getString(key), param);
     }
 }

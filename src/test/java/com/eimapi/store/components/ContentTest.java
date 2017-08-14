@@ -36,12 +36,13 @@ public class ContentTest {
 
     @Before
     public void setUp() throws Exception {
-        this.ss = new SpaceStoreForTest("./base", "base-test-uuid", "test");
+        this.ss = new SpaceStoreForTest("./base", "base-test-uuid");
         this.content = new ContentForTest<>(ss, "uuid-base-cc", "/tmp");
     }
 
     @Test
     public void ContentTestBuilder() throws Exception {
+        @SuppressWarnings("unchecked")
         ContentForTest content = new ContentForTest(this.ss);
 
         Assert.assertNotNull(content);
@@ -49,6 +50,8 @@ public class ContentTest {
 
     @Test(expected = ContentStoreException.class)
     public void ContentTestBuilderError() throws Exception {
+
+        @SuppressWarnings({"unchecked", "unused"})
         ContentForTest content = new ContentForTest(null);
     }
 
@@ -108,7 +111,7 @@ public class ContentTest {
 
     @Test
     public void setSpaceStore() throws Exception {
-        SpaceStoreForTest forTest = new SpaceStoreForTest("/base", "uuid", "name");
+        SpaceStoreForTest forTest = new SpaceStoreForTest("/base", "uuid");
         this.content.setSpaceStore(forTest);
 
         Assert.assertNotNull(this.content.getSpaceStore());
