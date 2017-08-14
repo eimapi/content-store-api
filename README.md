@@ -1,5 +1,7 @@
 # Content Store API
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b53fda8864c8458b86047c14b809b8c7)](https://www.codacy.com/app/gsdenys/content-store-api?utm_source=github.com&utm_medium=referral&utm_content=eimapi/content-store-api&utm_campaign=badger)
+
 This is an generic API to work with content store in the **EIMAPI** project. Case you want to create a new persistence method to **EIMAPI** you neeed to create a new java project and implement the interfaces provided by this API following the guide bellow.
 
  1. Create new [Maven](http://maven.apache.org) or [Gradle](https://gradle.org/) project
