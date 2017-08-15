@@ -11,6 +11,6 @@ after_success:
   - java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r build/reports/jacoco/test/jacocoTestReport.xml
 
 script:
-  - ./gradlew test jacocoTestReport
+  - ./gradlew test jacocoTestReport -x signArchives
 
 install: true
