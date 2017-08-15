@@ -24,4 +24,5 @@ This is an generic API to work with content store in the **EIMAPI** project. Cas
  3. Extends the **Content.java** and **SpaceStore.java** classes
  4. Implement the **ContentService** and **SpaceStoreService** interfaces.
  
+ 
 An implementation can be found at [content-store-fs-impl](https://github.com/eimapi/content-store-fs-impl/tree/master) project. This project implements this API, and use the file system to persist the content.
