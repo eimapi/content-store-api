@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eimapi.store.base;
+package io.github.eimapi.store.base;
 
-import com.eimapi.store.components.SpaceStore;
-import com.eimapi.store.exception.ContentStoreException;
+import io.github.eimapi.store.components.SpaceStore;
+import io.github.eimapi.store.exception.ContentStoreException;
 
 /**
  * Class extended from {@link SpaceStore} just for a test propose

@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eimapi.store.components;
+package io.github.eimapi.store.components;
 
-import com.eimapi.store.exception.ContentStoreException;
+import io.github.eimapi.store.exception.ContentStoreException;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
@@ -48,6 +48,7 @@ public abstract class SpaceStore implements Serializable {
      * default constructor
      *
      * @param base - the base for space store
+     * @throws ContentStoreException - any exception
      */
     protected SpaceStore(String base) throws ContentStoreException {
         this();
@@ -59,6 +60,7 @@ public abstract class SpaceStore implements Serializable {
      *
      * @param base - the base for space store
      * @param uuid - the space store uuid
+     * @throws ContentStoreException - any exception
      */
     protected SpaceStore(String base, String uuid) throws ContentStoreException {
         this(base);
@@ -78,6 +80,7 @@ public abstract class SpaceStore implements Serializable {
      * Set the space store uuid
      *
      * @param uuid - the uuid in a {@link String} format
+     * @throws ContentStoreException - any exception
      */
     public void setUuid(String uuid) throws ContentStoreException {
         if (uuid == null || uuid.trim().isEmpty()) {
@@ -102,6 +105,7 @@ public abstract class SpaceStore implements Serializable {
      * set the store base
      *
      * @param base - the store base
+     * @throws ContentStoreException - any exception
      */
     public void setBase(String base) throws ContentStoreException {
         if (base == null || base.trim().isEmpty()) {

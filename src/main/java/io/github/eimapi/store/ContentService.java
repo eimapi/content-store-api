@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eimapi.store;
+package io.github.eimapi.store;
 
-import com.eimapi.store.components.Content;
-import com.eimapi.store.components.SpaceStore;
-import com.eimapi.store.exception.ContentStoreException;
+import io.github.eimapi.store.components.Content;
+import io.github.eimapi.store.components.SpaceStore;
+import io.github.eimapi.store.exception.ContentStoreException;
 
 
 /**
@@ -38,6 +38,7 @@ public interface ContentService<T extends Content, E extends SpaceStore> {
      *
      * @param spaceStore - the space store that will receive the content
      * @return T - the created content
+     * @throws ContentStoreException - any exception
      */
     T createNewContent(E spaceStore) throws ContentStoreException;
 
@@ -46,6 +47,7 @@ public interface ContentService<T extends Content, E extends SpaceStore> {
      *
      * @param spaceStore - the space store that contain content
      * @param content    - the content that will be deleted
+     * @throws ContentStoreException - any exception
      */
     void deleteContent(E spaceStore, T content) throws ContentStoreException;
 
@@ -56,6 +58,7 @@ public interface ContentService<T extends Content, E extends SpaceStore> {
      * @param contentBase  - the content that will be versioned
      * @param versionLabel - the new version label
      * @return T - the new version of content
+     * @throws ContentStoreException - any exception
      */
     T createNewVersion(E spaceStore, T contentBase, String versionLabel) throws ContentStoreException;
 
@@ -66,6 +69,7 @@ public interface ContentService<T extends Content, E extends SpaceStore> {
      * @param contentBase  - the content that will be recovered
      * @param versionLabel - the new version label
      * @return T - the recovered content
+     * @throws ContentStoreException - any exception
      */
     T recoveryVersion(E spaceStore, T contentBase, String versionLabel) throws ContentStoreException;
 }

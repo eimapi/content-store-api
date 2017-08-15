@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.eimapi.store.base;
+package io.github.eimapi.store.base;
 
-import com.eimapi.store.components.Content;
-import com.eimapi.store.components.SpaceStore;
-import com.eimapi.store.exception.ContentStoreException;
+import io.github.eimapi.store.components.Content;
+import io.github.eimapi.store.components.SpaceStore;
+import io.github.eimapi.store.exception.ContentStoreException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 /**
- * Class extended from {@link com.eimapi.store.components.Content} just for a test propose
+ * Class extended from {@link Content} just for a test propose
  *
  * @version 0.0.1
  * @since 0.0.1
