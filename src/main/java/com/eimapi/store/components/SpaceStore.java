@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.eimapi.store.components;
+package com.eimapi.store.components;
 
-import io.github.eimapi.store.exception.ContentStoreException;
+import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.Serializable;
 import java.text.MessageFormat;

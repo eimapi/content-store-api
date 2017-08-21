@@ -1,4 +1,4 @@
-package io.github.eimapi.store.exception;
+package com.eimapi.store.exception;
 
 import java.security.PrivilegedActionException;
 

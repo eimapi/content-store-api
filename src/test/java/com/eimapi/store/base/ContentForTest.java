@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.eimapi.store.base;
+package com.eimapi.store.base;
 
-import io.github.eimapi.store.components.Content;
-import io.github.eimapi.store.components.SpaceStore;
-import io.github.eimapi.store.exception.ContentStoreException;
+import com.eimapi.store.components.Content;
+import com.eimapi.store.components.SpaceStore;
+import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

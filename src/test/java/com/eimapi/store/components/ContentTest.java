@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.eimapi.store.components;
+package com.eimapi.store.components;
 
-import io.github.eimapi.store.base.ContentForTest;
-import io.github.eimapi.store.base.SpaceStoreForTest;
-import io.github.eimapi.store.exception.ContentStoreException;
+import com.eimapi.store.base.SpaceStoreForTest;
+import com.eimapi.store.exception.ContentStoreException;
+import com.eimapi.store.base.ContentForTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
