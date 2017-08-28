@@ -1,4 +1,4 @@
-group 'io.github.eimapi'
+group 'com.eimapi'
 version '0.0.1'
 
 task wrapper(type: Wrapper) {
@@ -22,7 +22,7 @@ dependencies {
     testCompile group: 'commons-io', name: 'commons-io', version: '2.5'
 }
 
-//create native2ascii task
+//native2ascii task - convert the properties files to ASCII
 import org.apache.tools.ant.filters.EscapeUnicode
 
 tasks.withType(ProcessResources).each { task ->
@@ -32,21 +32,8 @@ tasks.withType(ProcessResources).each { task ->
     }
 }
 
-//coverage with jacoco
-/*
-jacoco {
-    toolVersion = "0.7.6.201602180812"
-    reportsDir = file("$buildDir/reports/jacoco")
-}
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        csv.enabled true
-        html.destination "${buildDir}/reports/jacoco/html"
-    }
-}
-*/
+//Maven Centrar Tasks
 
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
@@ -86,7 +73,7 @@ uploadArchives {
                 name 'content-store-api'
                 packaging 'jar'
                 description 'This is an generic API to work with content store in the EIMAPI project'
-                url 'https://eimapi.github.io/content-store-api/'
+                url 'http://eimapi.com/content-store-api/'
 
                 scm {
                     connection 'scm:git:git@github.com:eimapi/content-store-api.git'
