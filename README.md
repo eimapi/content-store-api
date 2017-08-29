@@ -26,3 +26,11 @@ This is an generic API to work with content store in the **EIMAPI** project. Cas
  
  
 An implementation can be found at [content-store-fs-impl](https://github.com/eimapi/content-store-fs-impl/tree/master) project. This project implements this API, and use the file system to persist the content.
+
+## Compile
+
+To compile the content store API, you need to clone this repository, enter in the **content-store-api** directory and run the follow command:
+ 
+        ./gradlew build -x signArchives
+        
+Do not forget the **-x signArchives** this prevent *signArchives* task from running.
