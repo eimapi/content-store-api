@@ -15,6 +15,7 @@
  */
 package com.eimapi.store.components;
 
+import com.eimapi.store.bunddle.ContentStoreMessager;
 import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.Serializable;
@@ -35,14 +36,10 @@ public abstract class SpaceStore implements Serializable {
     private String uuid;
     private String base;
 
-    private ResourceBundle bundle;
-
     /**
      * private constructor
      */
-    protected SpaceStore() {
-        this.bundle = ResourceBundle.getBundle("content-store", Locale.getDefault());
-    }
+    protected SpaceStore() {}
 
     /**
      * default constructor
@@ -85,7 +82,7 @@ public abstract class SpaceStore implements Serializable {
     public void setUuid(String uuid) throws ContentStoreException {
         if (uuid == null || uuid.trim().isEmpty()) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null", "uuid", SpaceStore.class.getSimpleName())
+                    ContentStoreMessager.getMessage("store.field.null", "uuid", SpaceStore.class.getSimpleName())
             );
         }
 
@@ -110,7 +107,7 @@ public abstract class SpaceStore implements Serializable {
     public void setBase(String base) throws ContentStoreException {
         if (base == null || base.trim().isEmpty()) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null", "base", SpaceStore.class.getSimpleName())
+                    ContentStoreMessager.getMessage("store.field.null", "base", SpaceStore.class.getSimpleName())
             );
         }
 
@@ -139,16 +136,5 @@ public abstract class SpaceStore implements Serializable {
         int result = uuid != null ? uuid.hashCode() : 0;
         result = 31 * result + (base != null ? base.hashCode() : 0);
         return result;
-    }
-
-    /**
-     * Message Bundle method
-     *
-     * @param key   - the key for message bundle
-     * @param param - the parameter array
-     * @return String - the message
-     */
-    private String getMessage(String key, Object... param) {
-        return MessageFormat.format(this.bundle.getString(key), param);
     }
 }

@@ -42,7 +42,6 @@ public class ContentTest {
 
     @Test
     public void ContentTestBuilder() throws Exception {
-        @SuppressWarnings("unchecked")
         ContentForTest content = new ContentForTest(this.ss);
 
         Assert.assertNotNull(content);
@@ -51,7 +50,6 @@ public class ContentTest {
     @Test(expected = ContentStoreException.class)
     public void ContentTestBuilderError() throws Exception {
 
-        @SuppressWarnings({"unchecked", "unused"})
         ContentForTest content = new ContentForTest(null);
     }
 

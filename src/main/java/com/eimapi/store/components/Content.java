@@ -15,12 +15,10 @@
  */
 package com.eimapi.store.components;
 
+import com.eimapi.store.bunddle.ContentStoreMessager;
 import com.eimapi.store.exception.ContentStoreException;
 
 import java.io.Serializable;
-import java.text.MessageFormat;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * Abstract class to be used as base to create a Content object implementation.
@@ -36,10 +34,7 @@ public abstract class Content<T extends SpaceStore> implements ContentOperations
     private String base;
     private T spaceStore;
 
-    private ResourceBundle bundle;
-
     protected Content() {
-        this.bundle = ResourceBundle.getBundle("content-store", Locale.getDefault());
     }
 
     /**
@@ -85,7 +80,7 @@ public abstract class Content<T extends SpaceStore> implements ContentOperations
     public void setUuid(String uuid) throws ContentStoreException {
         if (uuid == null || uuid.trim().isEmpty()) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null", "uuid", Content.class.getSimpleName())
+                    ContentStoreMessager.getMessage("store.field.null", "uuid", Content.class.getSimpleName())
             );
         }
 
@@ -110,7 +105,7 @@ public abstract class Content<T extends SpaceStore> implements ContentOperations
     public void setBase(String base) throws ContentStoreException {
         if (base == null || base.trim().isEmpty()) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null", "base", Content.class.getSimpleName())
+                    ContentStoreMessager.getMessage("store.field.null", "base", Content.class.getSimpleName())
             );
         }
 
@@ -135,7 +130,7 @@ public abstract class Content<T extends SpaceStore> implements ContentOperations
     public void setSpaceStore(T spaceStore) throws ContentStoreException {
         if (spaceStore == null) {
             throw new ContentStoreException(
-                    this.getMessage("store.field.null", "spaceStore", Content.class.getSimpleName())
+                    ContentStoreMessager.getMessage("store.field.null", "spaceStore", Content.class.getSimpleName())
             );
         }
 
@@ -166,16 +161,5 @@ public abstract class Content<T extends SpaceStore> implements ContentOperations
         result = 31 * result + (base != null ? base.hashCode() : 0);
         result = 31 * result + (spaceStore != null ? spaceStore.hashCode() : 0);
         return result;
-    }
-
-    /**
-     * Message Bundle method
-     *
-     * @param key   - the key for message bundle
-     * @param param - the parameter array
-     * @return String - the message
-     */
-    private String getMessage(String key, Object... param) {
-        return MessageFormat.format(this.bundle.getString(key), param);
     }
 }

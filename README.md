@@ -12,14 +12,14 @@ This is an generic API to work with content store in the **EIMAPI** project. Cas
  
        **Gradle**
        
-        compile group: 'com.eimapi', name: 'content-store-api', version: '0.0.1'
+        compile group: 'com.eimapi', name: 'content-store-api', version: '1.0.0'
     
        **Maven**
              
         <dependency>
            <groupId>com.eimapi</groupId>
            <artifactId>content-store-api</artifactId>
-           <version>0.0.1</version>
+           <version>1.0.0</version>
         </dependency>
  3. Extends the **Content.java** and **SpaceStore.java** classes
  4. Implement the **ContentService** and **SpaceStoreService** interfaces.
